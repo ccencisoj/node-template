@@ -39,7 +39,11 @@ createFile(`./src/repositories/${capitalizedValue}Repository.ts`, `
 
   const ${capitalizedValue}Model = model("${capitalizedValue}", ${capitalizedValue}Schema);
 
-  const ${capitalizedValue}Repository = new MongoRepository<${capitalizedValue}>(${capitalizedValue}Model);
+  const searchQuery = (searchValue: string)=> ({});
+
+  const options = {limit: 50, searchQuery};
+
+  const ${capitalizedValue}Repository = new MongoRepository<${capitalizedValue}>(${capitalizedValue}Model, options);
 
   export { ${capitalizedValue}Repository };
 
