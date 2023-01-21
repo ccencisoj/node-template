@@ -68,7 +68,7 @@ createFile(`./src/useCases/${dirname}/${capitalizedValue}/${capitalizedValue}Con
 createFile(`./src/useCases/${dirname}/${capitalizedValue}/${capitalizedValue}Guard.ts`, `
   import { ${capitalizedValue}DTO } from "./${capitalizedValue}DTO";
   import { hasPermission } from "${deep}helpers/hasPermission";
-  import { RequiredPermissionException } from "${deep}exceptions/RequiredPermissionException";
+  import { PermissionException } from "${deep}exceptions/PermissionException";
 
   type Response = Promise<void>;
 
@@ -79,7 +79,7 @@ createFile(`./src/useCases/${dirname}/${capitalizedValue}/${capitalizedValue}Gua
       const has${capitalizedValue}Permission = await hasPermission(dto.token, ${camelCaseValue}Permission);
 
       if(!has${capitalizedValue}Permission) {
-        throw new RequiredPermissionException(${camelCaseValue}Permission);
+        throw new PermissionException(${camelCaseValue}Permission);
       }
     }
   }
